@@ -2198,7 +2198,9 @@ function startField(q) {
   game.mode = 'field';
   game.paused = false;
   showScreen(null);
-  if (!pixelOn()) toast(questIntro(q)); // 픽셀 화면에서는 HUD 쪽지가 대신 알린다
+  // 픽셀 화면에서는 HUD 쪽지가 대신 알리고, 마을에서 뜬 웹 알림도 치운다
+  if (pixelOn()) $('toast').replaceChildren();
+  else toast(questIntro(q));
 }
 
 function questIntro(q) {
